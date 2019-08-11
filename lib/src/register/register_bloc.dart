@@ -1,8 +1,8 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutterandotrends/shared/models/user_model.dart';
 import 'package:flutterandotrends/src/app_bloc.dart';
 import 'package:flutterandotrends/src/app_module.dart';
-import 'package:flutterandotrends/src/model/user_model.dart';
 import 'package:flutterandotrends/src/repository/hasura_repository.dart';
 import 'package:rxdart/rxdart.dart';
 

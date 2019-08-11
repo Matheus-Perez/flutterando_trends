@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterandotrends/shared/models/lecture_model.dart';
 import 'package:flutterandotrends/src/home/home_bloc.dart';
 import 'package:flutterandotrends/src/home/home_module.dart';
-import 'package:flutterandotrends/src/model/lecture_model.dart';
 
 class HomePage extends StatefulWidget {
   @override

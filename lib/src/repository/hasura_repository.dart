@@ -1,9 +1,9 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterandotrends/src/model/lecture_model.dart';
-import 'package:flutterandotrends/src/model/lecture_question_liked_model.dart';
-import 'package:flutterandotrends/src/model/lecture_question_model.dart';
-import 'package:flutterandotrends/src/model/user_model.dart';
+import 'package:flutterandotrends/shared/models/lecture_model.dart';
+import 'package:flutterandotrends/shared/models/lecture_question_liked_model.dart';
+import 'package:flutterandotrends/shared/models/lecture_question_model.dart';
+import 'package:flutterandotrends/shared/models/user_model.dart';
 import 'package:hasura_connect/hasura_connect.dart';
 
 class HasuraRepository extends Disposable {
@@ -30,9 +30,10 @@ class HasuraRepository extends Disposable {
       } else {
         return UserModel.fromJson(data['data']['user'][0]);
       }
-    } catch (e) {
+    } on HasuraError catch (e) {
       print('LOGX ==:>> ERROR[getUser]');
       print(e);
+      print(e.extensions);
       print('=================');
       return null;
     }
@@ -59,9 +60,10 @@ class HasuraRepository extends Disposable {
       user.idUser = data['data']['insert_user']['returning'][0]['id_user'];
       user.infoDate = data['data']['insert_user']['returning'][0]['info_date'];
       return user;
-    } catch (e) {
+    } on HasuraError catch (e) {
       print('LOGX ==:>> ERROR[createUser]');
       print(e);
+      print(e.extensions);
       print('=================');
       return null;
     }
@@ -90,9 +92,10 @@ class HasuraRepository extends Disposable {
       lectureQuestion.infoDate =
           data['data']['insert_lecture_question']['returning'][0]['info_date'];
       return lectureQuestion;
-    } catch (e) {
+    } on HasuraError catch (e) {
       print('LOGX ==:>> ERROR[createLectureQuestion]');
       print(e);
+      print(e.extensions);
       print('=================');
       return null;
     }
@@ -111,9 +114,10 @@ class HasuraRepository extends Disposable {
         variables: {'id_lecture_question': lectureQuestion.idLectureQuestion},
       );
       return true;
-    } catch (e) {
+    } on HasuraError catch (e) {
       print('LOGX ==:>> ERROR[deleteLectureQuestion]');
       print(e);
+      print(e.extensions);
       print('=================');
       return false;
     }
@@ -136,9 +140,10 @@ class HasuraRepository extends Disposable {
         },
       );
       return true;
-    } catch (e) {
+    } on HasuraError catch (e) {
       print('LOGX ==:>> ERROR[createLiked]');
       print(e);
+      print(e.extensions);
       print('=================');
       return false;
     }
@@ -162,9 +167,10 @@ class HasuraRepository extends Disposable {
         },
       );
       return true;
-    } catch (e) {
+    } on HasuraError catch (e) {
       print('LOGX ==:>> ERROR[deleteLectureQuestionLiked]');
       print(e);
+      print(e.extensions);
       print('=================');
       return false;
     }
@@ -185,9 +191,10 @@ class HasuraRepository extends Disposable {
       return snapshot.stream.map(
         (json) => LectureModel.fromJsonList(json['data']['lecture']),
       );
-    } catch (e) {
+    } on HasuraError catch (e) {
       print('LOGX ==:>> ERROR[getLectures]');
       print(e);
+      print(e.extensions);
       print('=================');
       return null;
     }
@@ -225,9 +232,10 @@ class HasuraRepository extends Disposable {
         (json) =>
             LectureQuestionModel.fromJsonList(json['data']['lecture_question']),
       );
-    } catch (e) {
+    } on HasuraError catch (e) {
       print('LOGX ==:>> ERROR[getQuestionLectures]');
       print(e);
+      print(e.extensions);
       print('=================');
       return null;
     }

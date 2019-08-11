@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:flutterandotrends/src/model/lecture_model.dart';
+import 'package:flutterandotrends/shared/models/lecture_model.dart';
 import 'package:flutterandotrends/src/repository/hasura_repository.dart';
 import 'package:rxdart/rxdart.dart';
 

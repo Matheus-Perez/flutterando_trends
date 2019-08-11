@@ -1,5 +1,5 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:flutterandotrends/src/model/user_model.dart';
+import 'package:flutterandotrends/shared/models/user_model.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'repository/hasura_repository.dart';
